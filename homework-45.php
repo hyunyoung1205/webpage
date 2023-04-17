@@ -68,13 +68,16 @@
 
     <h2>5번 문제</h2>
     <?php
-    if(isset($_POST['y']) && strlen($_POST['y']) > 0 && isset($_POST['m'] && strlen($_POST['m']){
+    if(isset($_POST['y']) && strlen($_POST['y']) > 0) && (isset($_POST['m']) && strlen($_POST['m'])){
     $m = $_POST["m"];
     $y = $_POST["y"];
+    $wday=1;
         if(checkdate($m,1,$y)) {
             $firstweekday = getDate(mktime(0,0,0,$m,1,$y)); //해당 월 1일의 요일
+            $firstweekday = $firstweekday[$wday];
             $lastday = date("t", mktime(0,0,0,$m,1,$y)); //t = 주어진 월의 총 일 수(ex : 2014년 1월 = "31" 일)
-            $count = ceil(($firstweekday['wday']+ $lastday) / 7) * 7; //총 칸 수
+            $fc = ceil(($firstweekday+$lastday)/7);
+            $count = $fc * 7; 
             $j=0;
 
         echo "<table border='1' width=\"500\" bordercolor=\"#0000FF\">";
@@ -105,7 +108,6 @@
         }
     }
 ?>
-    
 
     </body>
 </html>
