@@ -100,8 +100,6 @@ echo "<br/>";
 else {	
 echo "<script>alert(\"올바른 날짜형식을 입력해 주세요\");</script>"; 	
 }
-}
-}
  ?>
     
 
