@@ -68,39 +68,41 @@
 
     <h2>5번 문제</h2>
     <?php
-$m = $_POST["m"];
-$y = $_POST["y"];
-if(checkdate($m,1,$y)) {
- $firstweekday = getDate(mktime(0,0,0,$m,1,$y)); //해당 월 1일의 요일
- $firstweekday = $firstweekday[wday];
- $lastday = date("t", mktime(0,0,0,$m,1,$y)); //t = 주어진 월의 총 일 수(ex : 2014년 1월 = "31" 일)
- $fc = ceil(($firstweekday+$lastday)/7); //총 주의 수
- $count = $fc*7; //for 문 count
- $j=1;
-echo "<table border='1' width=\"500\" bordercolor=\"#0000FF\"">";
-echo "<tr align=\"center\" bgcolor=\"#66FFFF\"><td colspan=\"7\">". $y."년 ".$m."월 달력</td></tr>";
-echo "<tr align=\"right\" bgcolor=\"#FF99FF\"><td>일</td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td><td>토</td></tr>";
- for ($i=1; $i<=$count; $i++){
-  if($i%7==1){
-   echo "<tr>";
-  }
-  echo "<td>";
-  if($i>$firstweekday && $j<=$lastday){
-   echo $j;
-   $j++;
-  }else{
-   echo "&nbsp;";
-  }
-  echo "</td>";
-  if($i%7==0){
-   echo "</tr>";
-  }
-echo "</table>";
-echo "<br/>";
-else {	
-echo "<script>alert(\"올바른 날짜형식을 입력해 주세요\");</script>"; 	
-}
- ?>
+    $m = $_POST["m"];
+    $y = $_POST["y"];
+        if(checkdate($m,1,$y)) {
+            $firstweekday = getDate(mktime(0,0,0,$m,1,$y)); //해당 월 1일의 요일
+            $lastday = date("t", mktime(0,0,0,$m,1,$y)); //t = 주어진 월의 총 일 수(ex : 2014년 1월 = "31" 일)
+            $count = ceil(($firstweekday['wday']+ $lastday) / 7) * 7; //총 칸 수
+            $j=0;
+
+        echo "<table border='1' width=\"500\" bordercolor=\"#0000FF\">";
+        echo "<tr align=\"center\" bgcolor=\"#66FFFF\"><td colspan=\"7\">". $y."년 ".$m."월 달력</td></tr>";
+        echo "<tr align=\"right\" bgcolor=\"#FF99FF\"><td>일</td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td><td>토</td></tr>";
+        
+        for($i=1; $i<=$count; $i++){
+            if($i%7==1){
+                echo "<tr>";
+            }
+            echo "<td>";
+                if($i>$firstweekday['wday'] && $j < $lastday){
+                    echo $j + 1;
+                    $j++;
+                }else{
+                    echo "&nbsp;";
+                }
+            echo "</td>";
+                if($i%7==0){
+                    echo "</tr>";
+                }
+           }
+        echo "</table>";
+        echo "<br/>";
+        }
+        else {	
+            echo "<script>alert(\"올바른 날짜형식을 입력해 주세요\");</script>"; 	
+        }
+?>
     
 
     </body>
