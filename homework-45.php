@@ -78,7 +78,7 @@ if(checkdate($m,1,$y)) {
  $count = $fc*7; //for 문 count
  $j=1;
 echo "<table border='1' width=\"500\" bordercolor=\"#0000FF\"">";
-echo "<tr bgcolor=\"#66FFFF\" align=\"center\"><td colspan=\"7\">". $y."년 ".$m."월 달력</td></tr>";
+echo "<tr align=\"center\" bgcolor=\"#66FFFF\"><td colspan=\"7\">". $y."년 ".$m."월 달력</td></tr>";
 echo "<tr align=\"right\" bgcolor=\"#FF99FF\"><td>일</td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td><td>토</td></tr>";
  for ($i=1; $i<=$count; $i++){
   if($i%7==1){
