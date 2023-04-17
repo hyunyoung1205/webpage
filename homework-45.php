@@ -68,6 +68,7 @@
 
     <h2>5번 문제</h2>
     <?php
+    if(isset($_POST['y']) && strlen($_POST['y']) > 0 && isset($_POST['m'] && strlen($_POST['m']){
     $m = $_POST["m"];
     $y = $_POST["y"];
         if(checkdate($m,1,$y)) {
@@ -102,6 +103,7 @@
         else {	
             echo "<script>alert(\"올바른 날짜형식을 입력해 주세요\");</script>"; 	
         }
+    }
 ?>
     
 
